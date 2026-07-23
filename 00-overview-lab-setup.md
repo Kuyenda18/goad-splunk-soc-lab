@@ -60,6 +60,7 @@ flowchart TB
     SOC ==>|"Case 1: Kerberoasting"| SRV02
     SOC ==>|"Case 2: AS-REP Roasting"| DC02
     SOC ==>|"Case 3: Constrained Delegation"| DC02
+    SOC ==>|"Case 4: RBCD chaining"| DC02
 
     SOC -->|":8000 Web UI"| Analyst(["SOC Analyst"])
 ```
@@ -112,5 +113,6 @@ Xác minh end-to-end: `splunk search 'index=* sourcetype=WinEventLog:Security'` 
 | 1 | [Case 1 — Kerberoasting](01-case1-kerberoasting.md) | Kerberoasting | T1558.003 |
 | 2 | [Case 2 — AS-REP Roasting](02-case2-asrep-roasting.md) | AS-REP Roasting | T1558.004 |
 | 3 | [Case 3 — Constrained Delegation](03-case3-constrained-delegation.md) | Constrained Delegation w/ Protocol Transition | T1550.003 |
+| 4 | [Case 4 — Constrained Delegation (no Protocol Transition)](04-case4-constrained-delegation-no-protocol-transition.md) | Constrained Delegation kerb-only → Bronze Bit (patched) → RBCD chaining | T1550.003 |
 
-(Các case tiếp theo — NTLM Relay, GPO Abuse, ACL abuse chain, DCSync, MSSQL privesc... — sẽ được thêm dần khi hoàn thành.)
+(Các case tiếp theo — NTLM Relay, GPO Abuse, ACL abuse chain, MSSQL privesc... — sẽ được thêm dần khi hoàn thành.)
