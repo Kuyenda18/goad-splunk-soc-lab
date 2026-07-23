@@ -2,7 +2,7 @@
 
 > Part 2 của series recap lab GOAD-Light + Splunk. Xem [Part 0 — Overview](00-overview-lab-setup.md) và [Part 1 — Kerberoasting](01-case1-kerberoasting.md).
 >
-> Ghi chú: case này chưa có screenshot lưu riêng thành file — toàn bộ output dưới đây là log/kết quả thật lấy trực tiếp từ phiên làm việc, dán nguyên văn.
+
 
 ## Bối cảnh
 
