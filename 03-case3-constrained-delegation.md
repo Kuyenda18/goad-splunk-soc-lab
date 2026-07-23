@@ -2,7 +2,7 @@
 
 > Part 3 của series recap lab GOAD-Light + Splunk. Xem [Part 0 — Overview](00-overview-lab-setup.md), [Part 1 — Kerberoasting](01-case1-kerberoasting.md), [Part 2 — AS-REP Roasting](02-case2-asrep-roasting.md).
 >
-> Đây là case dài nhất trong series — không chỉ vì kỹ thuật phức tạp hơn, mà vì phần lớn thời gian nằm ở việc **debug một lỗi tooling khó hiểu suốt ~2 tiếng** trước khi chứng minh được impact. Phần đó được giữ lại gần như đầy đủ vì bản thân quá trình debug có giá trị học thuật ngang với kỹ thuật tấn công.
+> Đây là case dài nhất trong series — không chỉ vì kỹ thuật phức tạp hơn, mà vì phần lớn thời gian nằm ở việc **debug một lỗi tooling khó hiểu** trước khi chứng minh được impact. Phần đó được giữ lại gần như đầy đủ vì bản thân quá trình debug có giá trị học thuật ngang với kỹ thuật tấn công.
 
 ## Bối cảnh
 
@@ -72,7 +72,7 @@ Cơ chế 2 pha:
 
 Vé được lưu vào file `.ccache` — nhưng **có vé chưa phải là impact**. Bước tiếp theo mới là phần khó thật sự.
 
-## Bước 3 — Sự cố: `STATUS_MORE_PROCESSING_REQUIRED` (~2 tiếng debug)
+## Bước 3 — Sự cố: `STATUS_MORE_PROCESSING_REQUIRED` 
 
 Dùng vé để đọc thật ổ đĩa của DC:
 
@@ -146,7 +146,7 @@ Trong đó, người dùng `r3l4x0` chỉ ra nguyên nhân: Impacket advertise d
 
 ### Đây có phải phát hiện 1 lỗ hổng/cơ chế MỚI không?
 
-Trả lời thẳng: **không**. Mọi mảnh ghép đều đã tồn tại trước: Impacket fail với vé RC4 qua SMB (đã có trong #1573), SPN-form ảnh hưởng etype (hệ quả của cơ chế Kerberos đã document một phần), quirk "dùng tên ngắn" (đã được chính tác giả GOAD ghi lại). Giá trị thật của phần điều tra này là **kết nối 3 mảnh rời rạc lại với nhau bằng bằng chứng cụ thể** (`describeTicket.py` cho thấy chính xác etype khác nhau), qua đó trả lời được cái "tại sao" mà tác giả GOAD từng bỏ ngỏ — đây là synthesis/verification có giá trị, không phải phát hiện cơ chế mới.
+Impacket fail với vé RC4 qua SMB (đã có trong #1573), SPN-form ảnh hưởng etype (hệ quả của cơ chế Kerberos đã document một phần), quirk "dùng tên ngắn" (đã được chính tác giả GOAD ghi lại). Giá trị thật của phần điều tra này là **kết nối 3 mảnh rời rạc lại với nhau bằng bằng chứng cụ thể** (`describeTicket.py` cho thấy chính xác etype khác nhau), qua đó trả lời được cái "tại sao" mà tác giả GOAD từng bỏ ngỏ — đây là synthesis/verification có giá trị, không phải phát hiện cơ chế mới.
 
 ## Bước 4 — Chứng minh impact thật
 
@@ -206,7 +206,7 @@ Vì `eddard.stark` là Domain Admin (có quyền `Replicating Directory Changes`
 
 Chữ ký của S4U2Proxy nằm ở trường **`Transited Services`** trong Event 4769 — bình thường trường này **luôn rỗng**; nó chỉ có giá trị khi vé được cấp qua chuỗi delegation.
 
-**Cạm bẫy:** Splunk **không** tự tách trường này thành field riêng (không có trong "Interesting Fields" mặc định của TA-Windows) — phải tự trích bằng `rex`.
+**Lưu ý:** Splunk **không** tự tách trường này thành field riêng (không có trong "Interesting Fields" mặc định của TA-Windows) — phải tự trích bằng `rex`.
 
 ```spl
 index=* sourcetype=WinEventLog:Security EventCode=4769
