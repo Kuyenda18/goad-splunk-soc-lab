@@ -2,6 +2,7 @@
 
 Recap quá trình tự dựng lab Active Directory đã tiêm sẵn lỗ hổng ([GOAD-Light](https://github.com/Orange-Cyberdefense/GOAD)), gắn Splunk giám sát, rồi tự tay tấn công từng kỹ thuật MITRE ATT&CK và viết detection rule cho nó — recon, khai thác, chứng minh impact và tạo rule.
 
+
 ## Mục lục
 
 | # | Bài viết | Kỹ thuật | ATT&CK |
@@ -13,10 +14,11 @@ Recap quá trình tự dựng lab Active Directory đã tiêm sẵn lỗ hổng 
 
 Các case tiếp theo (NTLM Relay, GPO Abuse, ACL abuse chain, DCSync detection, MSSQL privesc...) sẽ được thêm dần.
 
-## Nguyên tắc của loạt bài này
+## Rule
 
 Mỗi case đi đủ chu trình: **recon → xác định mục tiêu dựa trên output recon  → khai thác → chứng minh impact → viết SPL detection rule → kiểm chứng rule  trên traffic tấn công **. Case 3 còn có thêm một phần debug tooling dài, được giữ nguyên gần như đầy đủ vì bản thân quá trình loại trừ giả thuyết có giá trị học thuật ngang với kỹ thuật tấn công.
 
 ## Ghi chú
 
 Toàn bộ mật khẩu/hash xuất hiện trong các bài viết là dữ liệu **của một lab tự dựng, cô lập, dùng cho mục đích học tập** — không phải hệ thống thật.
+Có dùng AI (Claude Chat) hỗ trợ gián tiếp trong luồng tấn công, hỗ trợ syntax Splunk và research bug. 
