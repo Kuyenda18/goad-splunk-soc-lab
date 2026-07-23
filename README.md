@@ -1,6 +1,6 @@
 # GOAD-Light + Splunk — Purple Team Lab Recap
 
-Nhật ký kỹ thuật (tiếng Việt) của quá trình tự dựng một lab Active Directory dễ tổn thương ([GOAD-Light](https://github.com/Orange-Cyberdefense/GOAD)), gắn Splunk giám sát, rồi tự tay tấn công từng kỹ thuật MITRE ATT&CK và viết detection rule cho nó — recon thật, khai thác thật, chứng minh impact thật, rule thật, không suy đoán.
+Recap quá trình tự dựng lab Active Directory đã tiêm sẵn lỗ hổng ([GOAD-Light](https://github.com/Orange-Cyberdefense/GOAD)), gắn Splunk giám sát, rồi tự tay tấn công từng kỹ thuật MITRE ATT&CK và viết detection rule cho nó — recon, khai thác, chứng minh impact và tạo rule.
 
 ## Mục lục
 
@@ -15,7 +15,7 @@ Các case tiếp theo (NTLM Relay, GPO Abuse, ACL abuse chain, DCSync detection,
 
 ## Nguyên tắc của loạt bài này
 
-Mỗi case đi đủ chu trình: **recon thật → xác định mục tiêu dựa trên output recon (không có sẵn đáp án) → khai thác → chứng minh impact thật (không chỉ dừng ở "có hash/vé") → viết SPL detection rule → kiểm chứng rule tự bắn trên traffic tấn công thật**. Case 3 còn có thêm một phần debug tooling dài, được giữ nguyên gần như đầy đủ vì bản thân quá trình loại trừ giả thuyết có giá trị học thuật ngang với kỹ thuật tấn công.
+Mỗi case đi đủ chu trình: **recon → xác định mục tiêu dựa trên output recon  → khai thác → chứng minh impact → viết SPL detection rule → kiểm chứng rule  trên traffic tấn công **. Case 3 còn có thêm một phần debug tooling dài, được giữ nguyên gần như đầy đủ vì bản thân quá trình loại trừ giả thuyết có giá trị học thuật ngang với kỹ thuật tấn công.
 
 ## Ghi chú
 
