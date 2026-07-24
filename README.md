@@ -17,7 +17,7 @@ Các case tiếp theo (NTLM Relay, GPO Abuse, ACL abuse chain, MSSQL privesc...)
 
 ## Rule
 
-Mỗi case đi đủ chu trình: **recon → xác định mục tiêu dựa trên output recon  → khai thác → chứng minh impact → viết SPL detection rule → kiểm chứng rule  trên traffic tấn công **. Case 3 còn có thêm một phần debug tooling dài, được giữ nguyên gần như đầy đủ vì bản thân quá trình loại trừ giả thuyết có giá trị học thuật ngang với kỹ thuật tấn công.
+Mỗi case đi đủ chu trình: **recon → xác định mục tiêu dựa trên output recon  → khai thác → chứng minh impact → viết SPL detection rule → kiểm chứng rule  trên traffic tấn công **. 
 
 ## Ghi chú
 
